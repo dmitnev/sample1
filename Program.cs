@@ -1,21 +1,39 @@
-﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
+﻿//Console.WriteLine("Hello, World!");
 
-Console.Write("Введите имя: ");
-string? name = Console.ReadLine();
- 
-Console.Write("Введите возраст: ");
-int age = Convert.ToInt32(Console.ReadLine());
- 
-Console.Write("Введите рост: ");
-double height = Convert.ToDouble(Console.ReadLine());
- 
-Console.Write("Введите размер зарплаты: ");
-decimal salary = Convert.ToDecimal(Console.ReadLine());
- 
-Console.WriteLine($"Имя: {name}  Возраст: {age}  Рост: {height}м  Зарплата: {salary}$");
+using static System.Net.Mime.MediaTypeNames;
+
+internal class Program
+{
+    private static async Task Main(string[] args)
+    {
+        string path = "sampleNote.txt";
+        
+        using (StreamWriter writer = new StreamWriter(path, false))
+        {
+            await writer.WriteLineAsync();
+        }
+        using (StreamWriter writer = new StreamWriter(path, true))
+        {
+
+            Console.Write("Введите имя: ");
+            string? name = Console.ReadLine();
+
+            Console.Write("Введите возраст: ");
+            int age = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Введите рост: ");
+            double height = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Введите размер зарплаты: ");
+            decimal salary = Convert.ToDecimal(Console.ReadLine());
 
 
+//Вывод веденых данных в консоль. Update to "SAVE TXT"
+            Console.WriteLine($"Имя: {name}  Возраст: {age}  Рост: {height}м  Зарплата: {salary}$");
+
+        }
+    }
+}
 
 /*              Теория
 
@@ -28,7 +46,7 @@ Console.WriteLine($"Имя: {name}  Возраст: {age}  Рост: {height}м 
  может хранить значение null, то есть по сути не иметь никакого значения. Далее мы более подробно 
  разберем null и как с ним работать.
 
-/*Однако, может возникнуть вопрос, как нам быть, если, допустим, мы хотим ввести возраст в переменную 
+Однако, может возникнуть вопрос, как нам быть, если, допустим, мы хотим ввести возраст в переменную 
 типа int или другую информацию в переменные типа double или decimal? По умолчанию платформа .NET 
 предоставляет ряд методов, которые позволяют преобразовать различные значения к типам int, double и т.д. 
 Некоторые из этих методов:
